@@ -1,4 +1,4 @@
-Sub tester()
+Sub new_email()
 
 Dim OutApp As Object
 Dim OutMail As Object
