@@ -1,0 +1,20 @@
+Sub tester()
+
+Dim OutApp As Object
+Dim OutMail As Object
+
+Set OutApp = CreateObject("Outlook.Application")
+Set OutMail = OutApp.CreateItem(0)
+
+On Error Resume Next
+With OutMail
+    .To = "aaa@aaa.hu"
+    .CC = ""
+    .BCC = ""
+    .Subject = Subj
+    .HTMLBody = "Test"
+    .Display
+End With
+On Error GoTo 0
+
+End Sub
