@@ -54,3 +54,6 @@ End With
 'insert column
 Columns("G:G").Select
 Selection.Insert Shift:=xlToRight, CopyOrigin:=xlFormatFromLeftOrAbove
+
+'filtering
+ActiveSheet.Range().AutoFilter Field:=3, Criteria1:="<>0", Operator:=xlFilterValues
