@@ -35,6 +35,18 @@ Windows("filename").Activate
 'Input formula to cell
 ActiveCell.Formula = ""
 
-Sub refreshBEX()
-Run "BExAnalyzer.xla!SAPBEXrefresh", True
-End Sub
+'save workbook
+ActiveWorkbook.Save
+
+'turn screen update off and on
+With Application
+    .EnableEvents = False
+    .ScreenUpdating = False
+    .DisplayAlerts = False
+End With
+
+With Application
+    .EnableEvents = True
+    .ScreenUpdating = True
+    .DisplayAlerts = True
+End With
