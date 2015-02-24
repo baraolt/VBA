@@ -1,0 +1,6 @@
+'visible
+Worksheets("work").Visible = True
+'normal Hide
+Worksheets("work").Visible = False
+'very hidden
+Worksheets("Sheet1").Visible = xlVeryHidden
