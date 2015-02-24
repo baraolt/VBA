@@ -1,0 +1,15 @@
+Sub Test_Open()
+    Dim TestWorkbook As Workbook
+
+    Set TestWorkbook = Nothing
+    On Error Resume Next
+    Set TestWorkbook = Workbooks("GP KPIs 2015.xlsm")
+    On Error GoTo 0
+
+    If TestWorkbook Is Nothing Then
+        testbook = 0
+            Else
+        testbook = 1
+    End If
+
+End Sub
