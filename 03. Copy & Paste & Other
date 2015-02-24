@@ -1,4 +1,4 @@
-/'Select all
+'Select all
 Cells.Select
 
 'selects all cess under current selection, until there's data
@@ -34,3 +34,7 @@ Windows("filename").Activate
 
 'Input formula to cell
 ActiveCell.Formula = ""
+
+Sub refreshBEX()
+Run "BExAnalyzer.xla!SAPBEXrefresh", True
+End Sub
