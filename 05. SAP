@@ -32,6 +32,17 @@ session.findById("wnd[0]/tbar[1]/btn[8]").press
 session.findById("wnd[0]/usr/cntlCUSTOM/shellcont/shell/shellcont/shell").pressToolbarContextButton "&MB_EXPORT"
 session.findById("wnd[0]/usr/cntlCUSTOM/shellcont/shell/shellcont/shell").selectContextMenuItem "&XXL"
 
+'Export .xls with filename (zp33)
+session.findById("wnd[0]/usr/cntlLIST_B/shellcont/shell").pressToolbarContextButton "&MB_EXPORT"
+session.findById("wnd[0]/usr/cntlLIST_B/shellcont/shell").selectContextMenuItem "&PC"
+session.findById("wnd[1]/usr/subSUBSCREEN_STEPLOOP:SAPLSPO5:0150/sub:SAPLSPO5:0150/radSPOPLI-SELFLAG[1,0]").Select
+session.findById("wnd[1]/usr/subSUBSCREEN_STEPLOOP:SAPLSPO5:0150/sub:SAPLSPO5:0150/radSPOPLI-SELFLAG[1,0]").SetFocus
+session.findById("wnd[1]/tbar[0]/btn[0]").press
+session.findById("wnd[1]/usr/ctxtDY_PATH").Text = folderpath
+session.findById("wnd[1]/usr/ctxtDY_FILENAME").Text = zvfname
+session.findById("wnd[1]/usr/ctxtDY_FILENAME").caretPosition = 7
+session.findById("wnd[1]/tbar[0]/btn[0]").press
+
 Exit Sub
 SAPerror:
     MsgBox "Open SAP and log in!"
