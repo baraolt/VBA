@@ -1,4 +1,4 @@
-'Select all
+/'Select all
 Cells.Select
 
 'selects all cess under current selection, until there's data
