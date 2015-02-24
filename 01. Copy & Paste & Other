@@ -50,3 +50,7 @@ With Application
     .ScreenUpdating = True
     .DisplayAlerts = True
 End With
+
+'insert column
+Columns("G:G").Select
+Selection.Insert Shift:=xlToRight, CopyOrigin:=xlFormatFromLeftOrAbove
