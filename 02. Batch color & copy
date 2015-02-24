@@ -45,7 +45,7 @@ Do Until Cells(srcounter, sccounter).Value = ""
     rcounter = rcounter + 500
     srcounter = srcounter + 500
 
-    MsgBox "Adag kész!"
+    MsgBox "Batch copied"
 Loop
 
 End Sub
