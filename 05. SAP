@@ -1,0 +1,38 @@
+'refrest SapBEX
+Sub refreshBEX()
+Run "BExAnalyzer.xla!SAPBEXrefresh", True
+End Sub
+
+'/////Connect to SAP
+
+On Error GoTo SAPerror
+Set SapGuiAuto = GetObject("SAPGUI")  'Get the SAP GUI Scripting object
+Set SAPApp = SapGuiAuto.GetScriptingEngine 'Get the currently running SAP GUI
+Set SAPCon = SAPApp.Children(0) 'Get the first system that is currently connected
+Set session = SAPCon.Children(0) 'Get the first session (window) on that connection
+On Error GoTo 0
+
+'Start SAP transaction
+session.StartTransaction "COOIS"
+
+' Set variant
+session.findById("wnd[0]").sendVKey 17
+session.findById("wnd[1]/usr/txtV-LOW").Text = "Variant name"
+session.findById("wnd[1]/usr/txtENAME-LOW").Text = ""
+session.findById("wnd[1]/tbar[0]/btn[8]").press
+
+'Set date
+session.findById("wnd[0]/usr/tabsTABSTRIP_SELBLOCK/tabpSEL_00/ssub%_SUBSCREEN_SELBLOCK:PPIO_ENTRY:1200/ctxtS_ECKST-LOW").Text = basicstart
+session.findById("wnd[0]/usr/tabsTABSTRIP_SELBLOCK/tabpSEL_00/ssub%_SUBSCREEN_SELBLOCK:PPIO_ENTRY:1200/ctxtS_ECKST-HIGH").Text = "31.12.2015"
+
+'Run report
+session.findById("wnd[0]/tbar[1]/btn[8]").press
+
+'Export
+session.findById("wnd[0]/usr/cntlCUSTOM/shellcont/shell/shellcont/shell").pressToolbarContextButton "&MB_EXPORT"
+session.findById("wnd[0]/usr/cntlCUSTOM/shellcont/shell/shellcont/shell").selectContextMenuItem "&XXL"
+
+Exit Sub
+SAPerror:
+    MsgBox "Open SAP and log in!"
+    Application.CutCopyMode = False
