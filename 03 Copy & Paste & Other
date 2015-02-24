@@ -1,0 +1,36 @@
+'Select all
+Cells.Select
+
+'selects all cess under current selection, until there's data
+Range(Selection, Selection.End(xlDown)).Select
+
+'selects all cess under current selection, except last line
+Range(Selection, Selection.End(xlDown).Offset(-1)).Select
+
+'copy a seleciton
+Selection.Copy
+Range().Copy
+
+'paste special
+Selection.PasteSpecial Paste:=xlPasteValues, Operation:=xlNone, SkipBlanks _
+    :=False, Transpose:=False
+
+'default paste
+ActiveSheet.Paste
+
+Application.CutCopyMode = False
+
+'Clears data, keeps formatting
+Selection.ClearContents
+
+Selection.AutoFill Destination:=Range("A68795:L68795"), Type:=xlFillDefault
+
+'----------------------------------------------------------------------------------
+
+'Open a workbook
+Workbooks.Open("path name")
+
+Windows("filename").Activate
+
+'Input formula to cell
+ActiveCell.Formula = ""
