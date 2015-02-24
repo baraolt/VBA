@@ -1,0 +1,40 @@
+Columns("A:W").Select
+Sheets.Add
+ActiveWorkbook.PivotCaches.Create(SourceType:=xlDatabase, SourceData:= _
+    "Sheet1!R1C1:R1048576C23", Version:=xlPivotTableVersion14). _
+    CreatePivotTable TableDestination:="Sheet2!R3C1", TableName:="PivotTable2" _
+    , DefaultVersion:=xlPivotTableVersion14
+Sheets("Sheet2").Select
+
+'Adds smthg to filter area
+With ActiveSheet.PivotTables("PivotTable2").PivotFields("MRP controller")
+    .Orientation = xlPageField
+    .Position = 1
+End With
+
+'adds a value
+ActiveSheet.PivotTables("PivotTable2").AddDataField ActiveSheet.PivotTables( _
+    "PivotTable2").PivotFields("QTY"), "Count of QTY", xlCount
+
+'change to SUM
+With ActiveSheet.PivotTables("PivotTable2").PivotFields("Count of QTY")
+    .Caption = "Sum of QTY"
+    .Function = xlSum
+End With
+
+'filter
+ActiveSheet.PivotTables("PivotTable2").PivotFields("Prodn Supervisor"). _
+    CurrentPage = "(All)"
+On Error GoTo Endd
+With ActiveSheet.PivotTables("PivotTable2").PivotFields("Prodn Supervisor")
+    .CurrentPage = 721
+End With
+On Error GoTo 0
+ActiveSheet.PivotTables("PivotTable2").PivotFields("Prodn Supervisor"). _
+    EnableMultiplePageItems = True
+
+
+'clear filter
+ActiveSheet.PivotTables("PivotTable2").ClearAllFilters
+ActiveSheet.PivotTables("PivotTable2").PivotFields("Basic finish date"). _
+    Orientation = xlHidden
