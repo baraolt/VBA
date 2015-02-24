@@ -1,0 +1,51 @@
+Sub batchc&c()
+
+'Colors and copies batches of lines
+
+Dim rowcounter As Long
+rcounter = 2
+Dim counter As Long
+ccounter = 1
+Dim srowcounter As Long
+srcounter = 501
+Dim scounter As Long
+sccounter = 1
+Dim variable As Integer
+variable = 0
+
+Do Until Cells(srcounter, sccounter).Value = ""
+
+    Range(Cells(rcounter, ccounter), Cells(srcounter, sccounter)).Select
+
+    If variable = "0" Then
+        With Selection.Interior
+            .Pattern = xlSolid
+            .PatternColorIndex = xlAutomatic
+            .ThemeColor = xlThemeColorAccent3
+            .TintAndShade = 0.399975585192419
+            .PatternTintAndShade = 0
+        End With
+    Else
+        With Selection.Interior
+            .Pattern = xlSolid
+            .PatternColorIndex = xlAutomatic
+            .ThemeColor = xlThemeColorAccent6
+            .TintAndShade = 0.399975585192419
+            .PatternTintAndShade = 0
+        End With
+    End If
+    
+    If variable = "0" Then
+        variable = variable + 1
+    Else
+        variable = variable - 1
+    End If
+    
+    Selection.Copy
+    rcounter = rcounter + 500
+    srcounter = srcounter + 500
+
+    MsgBox "Adag kész!"
+Loop
+
+End Sub
