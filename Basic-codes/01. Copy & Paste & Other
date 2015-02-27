@@ -60,7 +60,7 @@ ActiveSheet.Range().AutoFilter Field:=3, Criteria1:="<>0", Operator:=xlFilterVal
 
 --------------------------------
 
-'masg box with mkultiple lines
+'msg box with mkultiple lines
 
 MsgBox "line1" & vbCrLf & _
         "line2" & vbCrLf & _
