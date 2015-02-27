@@ -7,8 +7,16 @@ As String, ByVal lpDirectory As String, ByVal nShowCmd _
 As Long) As Long
 
 ShellExecute 0, "open", "C:\Program Files (x86)\SAP\FrontEnd\SAPgui\", 0, 0, 1
+Application.Wait (Now + TimeValue("00:00:03"))
 
 -----------------------------------
 
-'Open app
-Shell "C:\Program Files (x86)\SAP\FrontEnd\SAPgui\saplgpad.exe"
+'Open SAP app
+Shell "C:\Program Files (x86)\SAP\FrontEnd\SAPgui\saplgpad.exe", vbNormalFocus
+
+'open second logon
+AppActivate "SAP"
+SendKeys "{DOWN}"
+SendKeys "{ENTER}"
+
+Application.Wait (Now + TimeValue("00:00:05"))
