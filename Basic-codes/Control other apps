@@ -1,0 +1,14 @@
+'Open Win Explorer and goto folder
+
+Declare Function ShellExecute Lib "shell32.dll" Alias _
+"ShellExecuteA" (ByVal hwnd As Long, ByVal lpOperation _
+As String, ByVal lpFile As String, ByVal lpParameters _
+As String, ByVal lpDirectory As String, ByVal nShowCmd _
+As Long) As Long
+
+ShellExecute 0, "open", "C:\Program Files (x86)\SAP\FrontEnd\SAPgui\", 0, 0, 1
+
+-----------------------------------
+
+'Open app
+Shell "C:\Program Files (x86)\SAP\FrontEnd\SAPgui\saplgpad.exe"
