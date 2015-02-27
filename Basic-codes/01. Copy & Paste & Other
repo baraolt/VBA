@@ -66,3 +66,9 @@ MsgBox "line1" & vbCrLf & _
         "line2" & vbCrLf & _
         "line3" & vbCrLf & _
         "line4"
+
+---------------------------------
+
+'minimize
+
+ActiveWindow.WindowState = xlMinimized
