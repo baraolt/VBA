@@ -11,7 +11,7 @@ Application.Wait (Now + TimeValue("00:00:03"))
 
 -----------------------------------
 
-'Open SAP app
+'Open SAP Logon app
 Shell "C:\Program Files (x86)\SAP\FrontEnd\SAPgui\saplgpad.exe", vbNormalFocus
 
 'open second logon
@@ -20,3 +20,9 @@ SendKeys "{DOWN}"
 SendKeys "{ENTER}"
 
 Application.Wait (Now + TimeValue("00:00:05"))
+
+
+'minimize SAP Logon
+AppActivate "SAP Logon"
+SendKeys "%"
+SendKeys "N"
