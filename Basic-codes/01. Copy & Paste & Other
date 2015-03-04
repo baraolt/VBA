@@ -67,6 +67,17 @@ MsgBox "line1" & vbCrLf & _
         "line3" & vbCrLf & _
         "line4"
 
+'msgbox with Yes/No
+
+answer = MsgBox("Do you want to run it all?", vbYesNo + vbQuestion, "Run all")
+
+If answer = vbYes Then
+    'do something
+Else
+    'do nothing
+End If
+
+
 ---------------------------------
 
 'minimize
