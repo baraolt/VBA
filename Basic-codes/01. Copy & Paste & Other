@@ -80,6 +80,7 @@ End If
 
 ---------------------------------
 
-'minimize
+'Windows minimize
 
 ActiveWindow.WindowState = xlMinimized
+Windows("aaa.xlsx").WindowState = xlMinimized
