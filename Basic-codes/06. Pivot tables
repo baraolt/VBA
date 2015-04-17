@@ -33,6 +33,10 @@ On Error GoTo 0
 ActiveSheet.PivotTables("PivotTable2").PivotFields("Prodn Supervisor"). _
     EnableMultiplePageItems = True
 
+'filter out 1 item
+With ActiveSheet.PivotTables("PivotTable1").PivotFields("Material")
+    .PivotItems("(blank)").Visible = False
+End With
 
 'clear filter
 ActiveSheet.PivotTables("PivotTable2").ClearAllFilters
