@@ -47,3 +47,85 @@ Exit Sub
 SAPerror:
     MsgBox "Open SAP and log in!"
     Application.CutCopyMode = False
+
+
+///////////////////////Advanced
+
+Sub NEW_ZMSTO_SAP()
+
+With Application
+    .EnableEvents = False
+    .ScreenUpdating = False
+    .DisplayAlerts = False
+End With
+
+Windows("GP_bekeres.xlsm").Activate
+Sheets("Control").Select
+Range("F9").Copy
+
+On Error Resume Next
+AppActivate "SAP"
+AppActivate "SAP Easy"
+On Error GoTo 0
+
+kezd:
+
+On Error GoTo SAPerror
+Set SapGuiAuto = GetObject("SAPGUI")  'Get the SAP GUI Scripting object
+Set SAPApp = SapGuiAuto.GetScriptingEngine 'Get the currently running SAP GUI
+Set SAPCon = SAPApp.Children(0) 'Get the first system that is currently connected
+Set session = SAPCon.Children(0) 'Get the first session (window) on that connection
+
+'Start SAP transaction
+session.StartTransaction "ZMSTO"
+
+' Set variant
+session.findById("wnd[0]").sendVKey 17
+session.findById("wnd[1]/usr/txtV-LOW").Text = "GMH4 BEKERES"
+session.findById("wnd[1]/usr/txtENAME-LOW").Text = ""
+session.findById("wnd[1]/tbar[0]/btn[8]").press
+
+'Run report
+session.findById("wnd[0]/tbar[1]/btn[8]").press
+
+'Export
+session.findById("wnd[0]/usr/cntlOUTPUTDATA/shellcont/shell").pressToolbarContextButton "&MB_EXPORT"
+session.findById("wnd[0]/usr/cntlOUTPUTDATA/shellcont/shell").selectContextMenuItem "&XXL"
+
+Windows("Controller.xlsm").Activate
+Range("A1").Select
+Application.CutCopyMode = False
+
+Range("P5").Value = Range("M5").Value
+Range("S5").Value = Range("D5").Value
+
+With Application
+    .EnableEvents = True
+    .ScreenUpdating = True
+    .DisplayAlerts = True
+End With
+
+Exit Sub
+SAPerror:
+    sap_start
+    Resume kezd
+End Sub
+
+------------------------------------------
+
+Sub sap_start()
+
+Shell "C:\Program Files (x86)\SAP\FrontEnd\SAPgui\saplgpad.exe", vbNormalFocus
+Application.Wait (Now + TimeValue("00:00:03"))
+
+SendKeys "{DOWN}"
+SendKeys "{ENTER}"
+Application.Wait (Now + TimeValue("00:00:08"))
+
+AppActivate "SAP Logon"
+SendKeys "%"
+SendKeys "N"
+
+Application.Wait (Now + TimeValue("00:00:03"))
+
+End Sub
