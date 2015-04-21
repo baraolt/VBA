@@ -49,7 +49,7 @@ SAPerror:
     Application.CutCopyMode = False
 
 
-///////////////////////Advanced
+'///////////////////////Advanced
 
 Sub NEW_ZMSTO_SAP()
 
@@ -111,7 +111,7 @@ SAPerror:
     Resume kezd
 End Sub
 
-------------------------------------------
+'------------------------------------------
 
 Sub sap_start()
 
