@@ -38,6 +38,9 @@ ActiveCell.Formula = ""
 'save workbook
 ActiveWorkbook.Save
 
+'close workbook
+Windows("filename").Close
+
 'turn screen update off and on
 With Application
     .EnableEvents = False
