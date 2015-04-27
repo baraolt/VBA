@@ -1,11 +1,15 @@
 'Select all
 Cells.Select
 
-'selects all cess under current selection, until there's data
+'selects all cells under current selection, until there's data
 Range(Selection, Selection.End(xlDown)).Select
 
-'selects all cess under current selection, except last line
+'selects all cells under current selection, except last line
 Range(Selection, Selection.End(xlDown).Offset(-1)).Select
+
+'selects region
+Selection.CurrentRegion.Select
+Range("A1").CurrentRegion.Select
 
 'copy a seleciton
 Selection.Copy
