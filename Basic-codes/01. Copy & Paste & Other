@@ -93,3 +93,6 @@ Windows("aaa.xlsx").WindowState = xlMinimized
 'Filter and copy unique entries from range
 Sheets("Paste data").Columns("A:A").AdvancedFilter Action:=xlFilterCopy, _
 CopyToRange:=Worksheets("Control").Range("D1"), Unique:=True
+
+' TIMESTAMP
+Range("F2") = Format(Now(), "DD.MM.YYYY HH:MM:SS")
