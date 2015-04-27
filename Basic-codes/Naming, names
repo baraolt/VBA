@@ -1,0 +1,28 @@
+'As an example, the following code creates a name referring to Sheet2!$A$1:$F$50
+
+Sub MakeName()
+  ActiveWorkbook.Names.Add Name:="PTable", RefersTo:="Sheet2!$A$1:$F$50"
+End Sub
+
+-------------------------------------------------------------------------------
+'This will create the name, using the current selection as the reference
+
+Sub MakeName_Selection()
+  Sheets("Sheet2").Activate
+  Range("A1").CurrentRegion.Select
+  ActiveWorkbook.Names.Add Name:="PTable", RefersTo:=Selection
+End Sub
+
+-------------------------------------------------------------------------------
+'Let's assume that you need to find a specific cell first, then create a range 60 columns wide, offset from the found cell. You could use code like this:
+
+  'find row for Lot Profile
+  Range("A1").Select
+    Cells.Find(What:="Lot Profile", After:=ActiveCell, LookIn:=xlFormulas, _
+    LookAt:=xlPart, SearchOrder:=xlByRows, SearchDirection:=xlNext, _
+    MatchCase:=False).Activate
+  ActiveCell.Offset(1,5).Resize(1,60).Select
+  ActiveWorkbook.Names.Add Name:="Lots", RefersTo:=Selection
+
+  'you can also create names based on an offset of the current selection:
+  ActiveWorkbook.Names.Add Name:="Deposits", RefersTo:=Selection.Offset(1,0)
