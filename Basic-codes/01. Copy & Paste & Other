@@ -27,6 +27,9 @@ Application.CutCopyMode = False
 'Clears data, keeps formatting
 Selection.ClearContents
 
+'Deletes cell and shifts cells up
+Selection.Delete Shift:=xlUp
+
 Selection.AutoFill Destination:=Range("A68795:L68795"), Type:=xlFillDefault
 
 '----------------------------------------------------------------------------------
