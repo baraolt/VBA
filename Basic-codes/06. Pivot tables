@@ -43,6 +43,9 @@ ActiveSheet.PivotTables("PivotTable2").ClearAllFilters
 ActiveSheet.PivotTables("PivotTable2").PivotFields("Basic finish date"). _
     Orientation = xlHidden
     
+'refresh pivot
+ActiveSheet.PivotTables("PivotTable1").PivotCache.Refresh
+
 '////// FILTER for more than 1 value //////
 
 Dim PvtTbl As PivotTable
