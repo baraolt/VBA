@@ -68,6 +68,8 @@ Selection.Insert Shift:=xlToRight, CopyOrigin:=xlFormatFromLeftOrAbove
 'filtering
 ActiveSheet.Range().AutoFilter Field:=3, Criteria1:="<>0", Operator:=xlFilterValues
 
+'Clear all data
+ActiveSheet.ShowAllData
 --------------------------------
 
 'msg box with mkultiple lines
