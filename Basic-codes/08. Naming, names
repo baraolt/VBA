@@ -26,3 +26,6 @@ End Sub
 
   'you can also create names based on an offset of the current selection:
   ActiveWorkbook.Names.Add Name:="Deposits", RefersTo:=Selection.Offset(1,0)
+  
+  'Delete Named Range
+  ActiveWorkbook.Names("Weeks").Delete
