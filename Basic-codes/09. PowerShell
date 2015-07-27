@@ -1,0 +1,36 @@
+''''Save as''''
+Call Shell("powershell ""C:\Users\49187\Documents\SAP\Scripts\SAPdl.ps1""", vbHide)
+
+'File SAPdl.ps1:
+$wshell = New-Object -ComObject wscript.shell;
+Sleep 4
+$wshell.AppActivate('Save As')
+Sleep 1
+$wshell.SendKeys('%n')
+Sleep 1
+$wshell.SendKeys('^v')
+$wshell.SendKeys('~')
+
+''''Cancel''''
+Call Shell("powershell ""C:\Users\49187\Documents\SAP\Scripts\SAPcancel.ps1""", vbHide)
+
+'File: SAPcancel.ps1
+$wshell = New-Object -ComObject wscript.shell;
+Sleep 6
+$wshell.AppActivate('Save As')
+Sleep 1
+$wshell.SendKeys('{ESC}')
+
+''''Open Controller''''
+
+'File: OpenController.ps1
+
+Start-Process -FilePath 'C:\Program Files\Microsoft Office 15\root\office15\EXCEL.exe' -ArgumentList "/s"
+Sleep 2
+& "C:\Users\49187\Documents\GMH4\Reports\New report structure\New 2015.06\New_Controller.xlsm"
+$wshell = New-Object -ComObject wscript.shell;
+$wshell.SendKeys('^u')
+#$wshell.AppActivate('Book1')
+#Sleep 1
+#$wshell.SendKeys('%{F4}')
+#Start-Process -FilePath "C:\Users\49187\Documents\GMH4\Reports\New report structure\New 2015.06\New_Controller.xlsm" -ArgumentList "/s"
