@@ -1,0 +1,2 @@
+' Calculating Rounding Value
+=IF(C43>0; IF(B43<=C43;IF(C43<=D43; C43; D43); IF((ROUNDUP(B43/C43;0)*C43)<=D43; (ROUNDUP(B43/C43;0)*C43); D43)); IF(B43<D43; B43; D43))
