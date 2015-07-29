@@ -1,0 +1,37 @@
+'Calculates quantity to order based on Demand, Rounding Values and Stock
+
+Function CalcRV(Dm, Rv, Gw)
+
+Select Case Rv > 0
+    Case True
+        Select Case Dm
+        
+            Case Is <= Rv
+                Select Case Rv
+                    Case Is <= Gw
+                        CalcRV = Rv
+                    Case Is > Gw
+                        CalcRV = Gw
+                End Select
+                
+            Case Is > Rv
+            
+                Select Case WorksheetFunction.RoundUp(Dm / Rv, 0) * Rv
+                    Case Is <= Gw
+                        CalcRV = WorksheetFunction.RoundUp(Dm / Rv, 0) * Rv
+                    Case Is > Gw
+                        CalcRV = Gw
+                End Select
+                
+        End Select
+        
+    Case False
+        Select Case Dm < Gw
+            Case True
+                CalcRV = Dm
+            Case False
+                CalcRV = Gw
+        End Select
+End Select
+
+End Function
