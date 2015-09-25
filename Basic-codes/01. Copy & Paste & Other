@@ -103,5 +103,11 @@ Windows("aaa.xlsx").WindowState = xlMinimized
 Sheets("Paste data").Columns("A:A").AdvancedFilter Action:=xlFilterCopy, _
 CopyToRange:=Worksheets("Control").Range("D1"), Unique:=True
 
+'Remove filter MACRO
+
+Sub removefilter()
+If ActiveSheet.AutoFilterMode = True Then ActiveSheet.AutoFilterMode = False
+End Sub
+
 ' TIMESTAMP
 Range("F2") = Format(Now(), "DD.MM.YYYY HH:MM:SS")
