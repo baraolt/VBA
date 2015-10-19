@@ -32,6 +32,9 @@ Selection.Delete Shift:=xlUp
 
 Selection.AutoFill Destination:=Range("A68795:L68795"), Type:=xlFillDefault
 
+'Fill formula until end of table
+Selection.AutoFill Destination:=Range(Selection, Selection.Offset(0, -1).End(xlDown).Offset(0, 1)), Type:=xlFillDefault
+
 '----------------------------------------------------------------------------------
 
 'Open a workbook
